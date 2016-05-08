@@ -30,4 +30,6 @@
 2.Web Sockets、server-sent event
 3.WebRTC
 4.触摸事件
-5.相应式布局，Media Query等
+5.Web Storage
+6.离线应用
+7.相应式布局，Media Query等
