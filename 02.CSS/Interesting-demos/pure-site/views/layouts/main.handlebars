@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{> meta}}
+    {{> title}}
+
+    {{addLocalCSS  "/css/main.css" prepend=true hasOldIE=true}}
+    {{addLocalCSS  "/css/main-grid.css" prepend=true hasOldIE=true}}
+    {{addLocalCSS  "/css/rainbow/baby-blue.css"}}
+    {{addRemoteCSS "http://fonts.googleapis.com/css?family=Raleway:200"}}
+
+    {{> styles}}
+
+    {{> html5shiv}}
+    {{> analytics}}
+</head>
+<body>
+
+    <script>{{{state}}}</script>
+
+    <div id="layout">
+        {{> menu}}
+
+        <div id="main">
+
+            {{{body}}}
+
+            <div class="footer">
+                {{> legal}}
+            </div>
+        </div>
+    </div>
+
+  {{#if yuiBoot}}
+    {{> yui-boot}}
+  {{/if}}
+
+    {{addLocalJS "/js/ui.js"}}
+    {{addLocalJS "/vendor/rainbow/rainbow.min.js"}}
+    {{addLocalJS "/vendor/rainbow/language/generic.js"}}
+    {{addLocalJS "/vendor/rainbow/language/html.js"}}
+    {{addLocalJS "/vendor/rainbow/language/css.js"}}
+    {{addLocalJS "/vendor/rainbow/language/javascript.js"}}
+    {{addLocalJS "/vendor/rainbow/language/shell.js"}}
+
+  {{#localJS}}
+    <script src="{{{.}}}"></script>
+  {{/localJS}}
+
+</body>
+</html>

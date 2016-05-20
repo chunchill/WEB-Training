@@ -1,0 +1,16 @@
+YUI({
+    classNamePrefix: 'pure'
+}).use('gallery-sm-menu', function (Y) {
+
+    var myMenu = new Y.Menu({
+        container         : '#yui-enabled-menu',
+        sourceNode        : '#yui-enabled-menu-items',
+        orientation       : 'vertical',
+        hideOnOutsideClick: false,
+        hideOnClick       : false
+    });
+
+    myMenu.render();
+    myMenu.show();
+
+});

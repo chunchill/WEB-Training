@@ -1,0 +1,113 @@
+{{setTitle     "Buttons"}}
+{{setSubTitle  "Simple CSS for buttons."}}
+{{setActiveNav "buttons"}}
+
+{{addRemoteCSS "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"}}
+
+{{> header}}
+
+<div class="content">
+
+    {{sectionHeading "Default Buttons"}}
+    <p>
+        To create a Pure Button, add the {{code "pure-button"}} classname to any {{code "<a>"}} or {{code "<button>"}} element.
+    </p>
+
+  {{#prefixIds "default"}}
+    {{> buttons/default}}
+  {{/prefixIds}}
+
+
+  {{#code}}
+    {{> buttons/default}}
+  {{/code}}
+
+    {{sectionHeading "Disabled Buttons"}}
+    <p>
+        To mark a button as disabled, add the {{code "pure-button-disabled"}} classname alongside {{code "pure-button"}}.
+        Alternatively, add the "disabled" attribute directly to your button.
+    </p>
+
+  {{#prefixIds "disabled"}}
+    {{> buttons/disabled}}
+  {{/prefixIds}}
+
+  {{#code}}
+    {{> buttons/disabled}}
+  {{/code}}
+
+    {{sectionHeading "Active Buttons"}}
+    <p>
+        To style a button so that it appears "pressed", add the {{code "pure-button-active"}} classname alongside {{code "pure-button"}}.
+    </p>
+
+  {{#prefixIds "active"}}
+    {{> buttons/active}}
+  {{/prefixIds}}
+
+  {{#code}}
+    {{> buttons/active}}
+  {{/code}}
+
+    {{sectionHeading "Primary Buttons"}}
+    <p>
+        To indicate that a button represents a primary action, add the {{code "pure-button-primary"}} classname alongside {{code "pure-button"}}.
+    </p>
+
+  {{#prefixIds "primary"}}
+    {{> buttons/primary}}
+  {{/prefixIds}}
+
+  {{#code}}
+    {{> buttons/primary}}
+  {{/code}}
+
+
+
+    {{sectionHeading "Customizing Buttons"}}
+    <p>
+        Thanks to Pure's minimal styling, it is easy to build off of the generic Pure button and create customized buttons for your own application.
+    </p>
+
+    <p>
+        To customize button styles, you should group your custom CSS into a class such as {{code "button-foo"}}, which you can then add to an element that already has the {{code "pure-button"}} classname. Here are some examples.
+    </p>
+
+    <h3 class="content-subhead">Colored buttons with rounded corners</h3>
+
+  {{#prefixIds "primary"}}
+    {{> buttons/colors}}
+  {{/prefixIds}}
+
+  {{#code}}
+    {{> buttons/colors}}
+  {{/code}}
+
+
+    <h3 class="content-subhead">Buttons with different sizes</h3>
+
+  {{#prefixIds "primary"}}
+    {{> buttons/sizes}}
+  {{/prefixIds}}
+
+  {{#code}}
+    {{> buttons/sizes}}
+  {{/code}}
+
+
+    <h3 class="content-subhead">Buttons with icons</h3>
+    <p>
+        Pure doesn't ship with icon fonts, but we play nice with existing ones. Incorporating icon fonts with Pure Buttons is easy. In the example below, we're using icon fonts from <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>. Put the <a href="http://fortawesome.github.io/Font-Awesome/get-started/">Font Awesome CSS file</a> on your page and use an {{code "<i>"}} element within a {{code "pure-button"}} element.
+    </p>
+
+  {{#prefixIds "primary"}}
+    {{> buttons/icons}}
+  {{/prefixIds}}
+
+  {{#code}}
+    {{> buttons/icons}}
+  {{/code}}
+
+</div>
+
+{{> prevent-scroll}}

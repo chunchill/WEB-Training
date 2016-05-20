@@ -1,0 +1,131 @@
+// DROPBOX
+@dropbox: #2795EE;
+@white: #ffffff;
+
+.logo-dropbox-large {
+  .logo-dropbox(150px);
+}
+
+.logo-dropbox-small {
+  .logo-dropbox(26px);
+}
+
+.logo-dropbox(@radius) {
+  @ratio: (2 * @radius) / 300;
+  background-color: @dropbox;
+  width: 2 * @radius;
+  height: 2 * @radius;
+  position: relative;
+  overflow: hidden;
+  .border-radius(@radius);
+  .border-radius-fix();
+  .user-select-none();
+  div {
+    position: absolute;
+    background-color: @white;
+    &[class*=-none] {
+      background-color: @dropbox;
+    }
+  }
+  .base-left {
+    .transform(skew(0, 31deg));
+    width: 61 * @ratio;
+    height: 79 * @ratio;
+    left: 90 * @ratio;
+    top: 153 * @ratio;
+  }
+  .base-right {
+    .transform(skew(0, -31deg));
+    width: 61 * @ratio;
+    height: 79 * @ratio;
+    left: 151 * @ratio;
+    top: 153 * @ratio;
+  }
+  .base-middle {
+    .border-radius(100%);
+    width: 8 * @ratio;
+    height: 76 * @ratio;
+    left: 147 * @ratio;
+    top: 171 * @ratio;
+  }
+  .cover-left-none {
+    .transform(skew(-50deg, 34deg));
+    width: 62 * @ratio;
+    height: 40 * @ratio;
+    left: 70 * @ratio;
+    top: 152 * @ratio;
+  }
+  .cover-right-none {
+    .transform(skew(50deg, -34deg));
+    width: 62 * @ratio;
+    height: 40 * @ratio;
+    left: 170 * @ratio;
+    top: 152 * @ratio;
+  }
+  .cover-top {
+    .transform(skew(51deg, -33deg));
+    width: 60 * @ratio;
+    height: 37 * @ratio;
+    left: 71 * @ratio;
+    top: 79 * @ratio;
+  }
+  .cover-bottom {
+    .transform(skew(51deg, -33deg));
+    width: 60 * @ratio;
+    height: 37 * @ratio;
+    left: 171 * @ratio;
+    top: 148 * @ratio;
+  }
+  .cover-right {
+    .transform(skew(-51deg, 33deg));
+    width: 60 * @ratio;
+    height: 37 * @ratio;
+    left: 171 * @ratio;
+    top: 79 * @ratio;
+  }
+  .cover-left {
+    .transform(skew(-51deg, 33deg));
+    width: 60 * @ratio;
+    height: 37 * @ratio;
+    left: 71 * @ratio;
+    top: 148 * @ratio;
+  }
+  .box-none {
+    .transform(skew(-58deg, 32deg));
+    width: 60 * @ratio;
+    height: 38 * @ratio;
+    left: 121 * @ratio;
+    top: 113 * @ratio;
+  }
+}
+
+
+// MIXINS
+.border-radius(@radius...) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.border-radius-fix() {
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+.user-select-none() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.transform(@rules) {
+  -webkit-transform: @rules;
+  -moz-transform: @rules;
+  -ms-transform: @rules;
+  -o-transform: @rules;
+  transform: @rules;
+}
+

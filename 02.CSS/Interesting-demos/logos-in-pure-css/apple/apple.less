@@ -1,0 +1,209 @@
+// APPLE
+@white: #ffffff;
+@gray: #808080;
+@blue: #009CDC;
+@purple: #963D97;
+@red: #E13A3D;
+@orange: #F6832C;
+@yellow: #FCB83E;
+@green: #61BC48;
+
+.logo-apple-large {
+  .logo-apple(150px);
+}
+
+.logo-apple-small {
+  .logo-apple(26px);
+}
+
+.logo-apple(@radius) {
+  @ratio: (2 * @radius) / 300;
+  background-color: @white;
+  border: 2px @gray dotted;
+  width: 2 * @radius;
+  height: 2 * @radius;
+  position: relative;
+  overflow: hidden;
+  .border-radius(@radius);
+  .border-radius-fix();
+  .user-select-none();
+  div {
+    position: absolute;
+  }
+  .blue-curve-left {
+    background-color: @blue;
+    .border-radius(0 0 50% 50%);
+    width: 44 * @ratio;
+    height: 30 * @ratio;
+    left: 87 * @ratio;
+    top: 224 * @ratio;
+  }
+  .blue-curve-right {
+    background-color: @blue;
+    .border-radius(0 0 50% 50%);
+    width: 44 * @ratio;
+    height: 30 * @ratio;
+    left: 164 * @ratio;
+    top: 224 * @ratio;
+  }
+  .blue {
+    background-color: @blue;
+    width: 160 * @ratio;
+    height: 29 * @ratio;
+    left: 67 * @ratio;
+    top: 221 * @ratio;
+  }
+  .blue-none {
+    background-color: @white;
+    .border-radius(100%);
+    width: 53 * @ratio;
+    height: 23 * @ratio;
+    left: 121 * @ratio;
+    top: 244 * @ratio;
+  }
+  .purple {
+    background-color: @purple;
+    width: 190 * @ratio;
+    height: 29 * @ratio;
+    left: 53 * @ratio;
+    top: 195 * @ratio;
+  }
+  .red {
+    background-color: @red;
+    width: 200 * @ratio;
+    height: 30 * @ratio;
+    left: 46 * @ratio;
+    top: 166 * @ratio;
+  }
+  .orange {
+    background-color: @orange;
+    width: 168 * @ratio;
+    height: 33 * @ratio;
+    left: 48 * @ratio;
+    top: 135 * @ratio;
+  }
+  .orange-curve {
+    background-color: @orange;
+    .border-radius(100%);
+    width: 6 * @ratio;
+    height: 40 * @ratio;
+    left: 45 * @ratio;
+    top: 131 * @ratio;
+  }
+  .yellow {
+    background-color: @yellow;
+    width: 184 * @ratio;
+    height: 31 * @ratio;
+    left: 46 * @ratio;
+    top: 106 * @ratio;
+  }
+  .green-curve-left {
+    background-color: @green;
+    .border-radius(50% 50% 0 0);
+    width: 51 * @ratio;
+    height: 19 * @ratio;
+    left: 80 * @ratio;
+    top: 79 * @ratio;
+  }
+  .green-curve-right {
+    background-color: @green;
+    .border-radius(50% 50% 0 0);
+    width: 53 * @ratio;
+    height: 19 * @ratio;
+    left: 164 * @ratio;
+    top: 79 * @ratio;
+  }
+  .green {
+    background-color: @green;
+    width: 181 * @ratio;
+    height: 24 * @ratio;
+    left: 56 * @ratio;
+    top: 83 * @ratio;
+  }
+  .green-none {
+    background-color: @white;
+    .border-radius(100%);
+    width: 53 * @ratio;
+    height: 26 * @ratio;
+    left: 121 * @ratio;
+    top: 62 * @ratio;
+  }
+  .green-leaf {
+    .border-radius(100% 0 100% 0);
+    background-color: @green;
+    width: 49 * @ratio;
+    height: 56 * @ratio;
+    top: 25 * @ratio;
+    left: 139 * @ratio;
+  }
+  .bottom-left-none {
+    background-color: transparent;
+    .radial-gradient(~"100% 0, ellipse", ~"at top right", ~"rgba(0,0,0,0) 70%,", @white, ~"0");
+    width: 82 * @ratio;
+    height: 146 * @ratio;
+    left: 40 * @ratio;
+    top: 114 * @ratio;
+  }
+  .bottom-right-none {
+    background-color: transparent;
+    .radial-gradient(~"0 0, ellipse", ~"at top left", ~"rgba(0,0,0,0) 70%,", @white, ~"0");
+    width: 87 * @ratio;
+    height: 155 * @ratio;
+    left: 171 * @ratio;
+    top: 105 * @ratio;
+  }
+  .top-left-none {
+    background-color: transparent;
+    .radial-gradient(~"100% 100%, ellipse", ~"at bottom right", ~"rgba(0,0,0,0) 70%,", @white, ~"0");
+    width: 61 * @ratio;
+    height: 70 * @ratio;
+    left: 44 * @ratio;
+    top: 78 * @ratio;
+  }
+  .top-right-none {
+    background-color: transparent;
+    .radial-gradient(~"0 100%, ellipse", ~"at bottom left", ~"rgba(0,0,0,0) 70%,", @white, ~"0");
+    width: 58 * @ratio;
+    height: 62 * @ratio;
+    left: 191 * @ratio;
+    top: 78 * @ratio;
+  }
+  .apple-none {
+    background-color: @white;
+    .border-radius(100%);
+    width: 85 * @ratio;
+    height: 94 * @ratio;
+    left: 210 * @ratio;
+    top: 99 * @ratio;
+  }
+}
+
+
+// MIXINS
+.border-radius(@radius...) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.border-radius-fix() {
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+.user-select-none() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.radial-gradient (@prefixed-pos, @unprefixed-pos, @rules...) {
+  background-image: -moz-radial-gradient(@prefixed-pos, @rules);
+  background-image: -o-radial-gradient(@prefixed-pos, @rules);
+  background-image: -webkit-radial-gradient(@prefixed-pos, @rules);
+  background-image: radial-gradient(@unprefixed-pos, @rules);
+}
+

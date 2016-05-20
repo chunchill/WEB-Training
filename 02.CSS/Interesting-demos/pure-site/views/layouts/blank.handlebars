@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{> meta}}
+    {{> title}}
+    {{> styles}}
+    {{> html5shiv}}
+    {{> analytics}}
+</head>
+<body>
+
+{{{body}}}
+
+{{#localJS}}
+<script src="{{{.}}}"></script>
+{{/localJS}}
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+{{setTitle     "Base"}}
+{{setSubTitle  "Leveraging Normalize.css, an HTML5-ready alternative to CSS resets."}}
+{{setActiveNav "base"}}
+
+{{> header}}
+
+<div class="content">
+    {{sectionHeading "The Foundation"}}
+    <p>
+        All modules in Pure build on top of <a href="http://necolas.github.com/normalize.css/">Normalize.css</a>. It's our foundational layer to maintain some degree of cross-browser consistency. We like Normalize so much that we put it on our CDN. You can pull in Normalize.css by adding this {{code "<link>"}} element on your page:
+    </p>
+
+    {{#code wrap=true}}
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/{{pure.version}}/base-min.css">
+    {{/code}}
+
+    <h3>A bit about Normalize.css</h3>
+    <p>
+        <a href="http://necolas.github.com/normalize.css/">Normalize.css</a> is an open-source project by <a href="http://twitter.com/necolas">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal">Jonathan Neal</a>. <a href="http://nicolasgallagher.com/about-normalize-css/">In their own words</a>:
+    </p>
+
+    <blockquote class="content-quote">
+        Normalize.css is a small CSS file that provides better cross-browser consistency in the default styling of HTML elements. It’s a modern, HTML5-ready, alternative to the traditional CSS reset."
+    </blockquote>
+
+    <p>
+        Normalize.css comes with <a href="https://github.com/necolas/normalize.css/wiki">great documentation</a> and a <a href="http://nicolasgallagher.com/about-normalize-css/">thorough guide</a> explaining how it differs from a traditional reset. You can also check out YUI's <a href="http://yuilibrary.com/yui/docs/cssnormalize/">CSSNormalize</a> module, which includes the generic Normalize along with a <a href="http://yuilibrary.com/yui/docs/cssnormalize/#context">contextual version</a>. The contextual version of Normalize only applies normalized styles to elements that are children of an element with the class name {{code "yui3-normalized"}}.
+    </p>
+
+    {{sectionHeading "Extras"}}
+    <p>
+        In addition to Normalize.css rules, Pure's Base module contains some common styles that are used by most websites.
+    </p>
+
+    <h3>Hiding Elements</h3>
+
+    <p>
+        Add the {{code "hidden"}} attribute to an HTML element to hide it from the screen via {{code "display: none !important;"}}. Alternatively, for compatibility with old IE, you may use the CSS classname {{code ".hidden"}}.
+    </p>
+
+    {{#code "html"}}
+    <input type="text" name="_csrf" hidden>
+    {{/code}}
+
+    <h3>Responsive Images</h3>
+
+    <p>
+        Add the {{code ".pure-img"}} class name to an {{code "<img>"}} element to make it scale with the viewport. This is handy when building responsive websites.
+    </p>
+
+    {{#code "html"}}
+    <img class="pure-img" src="...">
+    {{/code}}
+
+    {{sectionHeading "Moving beyond Normalize"}}
+    <p>
+        Normalize.css is a great starting place for your project, but some HTML elements such as forms, tables, and menus require more styling than what's provided by Normalize.
+    </p>
+
+    <p>
+        We made a more opinionated look and feel for these elements, while keeping them minimal enough so that you can customize them for your site or app's needs. Check out our CSS for <a href="{{pathTo 'forms'}}">Forms</a>, <a href="{{pathTo 'tables'}}">Tables</a>, and <a href="{{pathTo 'menus'}}">Menus</a>.
+    </p>
+</div>
