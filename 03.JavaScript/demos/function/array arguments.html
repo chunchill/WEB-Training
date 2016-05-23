@@ -1,0 +1,32 @@
+
+<!DOCTYPE HTML>
+<!--STATUS OK-->
+<html class="expanded">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script>
+function sum(a,b)
+{
+	var total=0;
+	for(var i=0;i<arguments.length;i++)
+	{
+		total+=i;
+	}
+	return total;
+}
+
+var result=sum(1,2,3,4,5);
+alert(result);
+
+var items=[];
+for(var i=0;i<1001;i++)
+{
+	items[i]=i;
+}
+alert(items.length);
+var result2=sum.apply(null,items);
+alert(result2);
+
+</script>
+</head>
+</html>
