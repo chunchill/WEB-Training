@@ -1,0 +1,40 @@
+
+<!DOCTYPE HTML>
+<!--STATUS OK-->
+<html class="expanded">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+div{
+	float:left;
+	vertical-align:middle;
+	overflow:hidden; 
+	color:f5f;
+	background-color:#aa6;
+	font-size:20px;
+	text-align:center;
+    background-position: 0 -84px;
+    height: 80px;
+    line-height:80px;
+	margin: 30px 30px;
+    width: 80px;
+	
+}
+</style>
+<script>
+function count()
+{
+	for(var i=1;i<100;i=i+1)
+	{
+		if(i==50)
+			continue;
+		document.body.innerHTML+="<div>"+i+"</div>"
+	}
+
+}
+</script>
+</head>
+<body onload="count()">
+
+</body>
+</html>
