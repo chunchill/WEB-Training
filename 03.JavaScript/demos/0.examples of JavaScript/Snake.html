@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title></title>
+    <style>
+        body{ font: 12px/25px "宋体";}
+        #snake{ width: 500px; height: 500px; border: 2px #333 solid; background: green; position: relative; float: left;}
+        .u_bd strong{ font:30px/18px "Georgia"; color: #ff3300;}
+        .food{ width: 10px;height: 10px; background: red; position: absolute;z-index: 99;}
+        .node{ width: 10px;height: 10px; background: white; position: absolute;}
+        .fl{ float: left; width: 400px;}
+        .games{ overflow: hidden; width: 500px;}
+        .u_bd{ list-style-type: none; margin: 0;}
+        h1,h2{ margin: 0;padding: 0; font-size: 14px;text-align: center;}
+        .u_bd li{ float: left; margin-right: 10px; height: 30px; line-height: 30px;}
+        input[type='button']{ border: none; background: #006699;color: #ffffff;}
+    </style>
+</head>
+<body>
+<div class="games">
+    <ul class="u_bd">
+        <li>Score：<strong id="points">100</strong></li>
+        <li><input type="button" value="Start" id="start" /></li>
+        <li><input type="button" value="Pause" id="stop" /></li>
+        <li style="display:none;">Speed：<strong id="speed">500</strong></li>
+    </ul>
+</div>
+<div id="snake">
+</div>
+<script type="text/javascript"> 
+    var wyf={
+        byID:function(id){
+            if(typeof id !="string"){
+                return id;
+            }
+            else{
+                return document.getElementById(id);
+            }
+        },
+        byClass:function(oclass,oparent){
+            var element=(oparent||document).getElementsByTagName("*");
+            var result=[];
+            for(var i=0,lenght=element.length;i<lenght;i++)
+            {
+                if(element[i].className==oclass)
+                {
+                    result.push(element[i]);
+                }
+            }
+            return result;
+        },
+        //事件绑定
+        addHandler:function(element,type,fn){
+            if(element.addEventListener)
+            {
+                element.addEventListener(type,fn,false);
+            }else if(element.attachEvent){
+                element.attachEvent("on"+type,fn);
+            }else{
+                element["on"+type]=fn;
+            }
+        },
+        //兼容event
+        getEvent:function(event){
+            return event ? event : window.event;
+        },
+        //当前指向目标（兼容）
+        getTarget:function(event){
+            return event.target||event.srcElement;
+        },
+        random:function(min,max){
+            var rmax=max-min;
+            return Math.floor(Math.random()*rmax+min);
+        },
+        //赋dom坐标
+        domLeftTop:function(dom,colNum,rowNum){
+            dom.style.left=colNum*10+"px";
+            dom.style.top=rowNum*10+"px";
+        },
+        //画蛇的节点
+        drowNode:function(box,node,type){
+            var temp=document.createElement("div");
+            temp.className=type;
+            this.domLeftTop(temp,node.getCol(),node.getRow());
+            if(type=="food")
+            {
+                temp.setAttribute("row",node.getRow());
+                temp.setAttribute("col",node.getCol());
+            }
+            box.appendChild(temp);
+        },
+        //画蛇
+        drowSnake:function(snake,box){
+            var oldnode=this.byClass("node",box);
+            if(oldnode.length>0)
+            {
+                for(var i=0,len=oldnode.length;i<len;i++)
+                {
+                    box.removeChild(oldnode[i]);
+                }
+            }
+            var newnode=snake.getHead();
+            do{
+                this.drowNode(box,newnode,"node");
+                newnode=newnode.getNextNode();
+            }while(newnode!=null)
+        },
+        //创建食物
+        createFood:function(box){
+            var food=this.byClass("food",box);
+            if(food.length>0)
+            {
+                for(var i=0,len=food.length;i<len;i++)
+                {
+                    box.removeChild(food[i]);
+                }
+            }
+            var row=this.random(0,49),col=this.random(0,49);
+            var node=new Node(row,col);
+            this.drowNode(box,node,"food");
+        },
+        //初始化
+        init:function(box){
+            this.createFood(box);
+            var snake=new Snake();
+            for(var i=5;i>0;i--)
+            {
+                var node=new Node(i-1,0);
+                snake.addNode(node);
+            }
+            this.drowSnake(snake,box);
+            this.showPoints(snake,this.byID("points"));
+            return snake;
+        },
+        //得分
+        showPoints:function(snake,box){
+            var len=snake.length()-5;
+            box.innerHTML=len*10;
+        },
+        //移动
+        move:function(snake,food){
+            if(snake.getStatus()=="dead"){
+                alert("Game Over");
+                clearInterval(time);
+                time=null;
+            }
+            //判方向有效性
+            while(snake.getOperate().length!=0)
+            {
+                //取操作队列的第一个
+                var op=snake.getOperate().shift();
+                if(op!=snake.getDirection()){
+                    var dir=snake.getDirection();
+                    if(op=="up"&&dir=="down"){continue;}
+                    if(op=="down"&&dir=="up"){continue;}
+                    if(op=="left"&&dir=="right"){continue;}
+                    if(op=="right"&&dir=="left"){continue;}
+                    snake.setDirection(op);
+                    break;
+                }
+            }
+            var row=0;
+            var col=0;
+            switch(snake.getDirection())
+            {
+                case "up":row--;
+                    break;
+                case "down":row++;
+                    break;
+                case "left":col--;
+                    break;
+                case "right":col++;
+                    break;
+            }
+            var head=snake.getHead();
+            if(food.length>0)
+            {
+                if((head.getRow()+row)==food[0].getAttribute("row")&&(head.getCol()+col)==food[0].getAttribute("col"))
+                {
+                    var headnode=new Node(head.getRow()+row,head.getCol()+col);
+                    snake.eat(headnode);
+                    this.createFood(this.byID("snake"));
+                    this.showPoints(snake,this.byID("points"));
+                    snake.setSpeed();
+                }
+                else{
+                    var node=snake.getEnd();
+                    do{
+                        if(node.getPrevNode()==null)
+                        {
+                            break;
+                        }
+                        node.setRow(node.getPrevNode().getRow());
+                        node.setCol(node.getPrevNode().getCol());
+                        node=node.getPrevNode();
+                    }while(node!=null);
+                    head.setRow(head.getRow()+row);
+                    head.setCol(head.getCol()+col);
+                }
+                var headrow=head.getRow();
+                var headcol=head.getCol();
+                if(headrow>49||headrow<0||headcol>49||headcol<0)
+                {
+                    snake.setStatus("dead");
+                    return;
+                }
+                var temp=head.getNextNode().getNextNode();
+                do{
+                    if(temp.getRow()==headrow&&temp.getCol()==headcol)
+                    {
+                        snake.setStatus("dead");
+                        return;
+                    }
+                    temp=temp.getNextNode();
+                }while(temp!=null);
+                this.drowSnake(snake,this.byID("snake"));
+            }
+        }
+    };
+    //蛇对象
+    function Snake(){
+        this.direction = "down";
+        this.operate = [];
+        this.head = null;
+        this.end = null;
+        this.status = "live";
+        this.speed=500;
+    }
+    Snake.prototype={
+        //状态操作
+        getStatus:function(){
+            return this.status;
+        },
+        setStatus:function(state){
+            this.status=state;
+        },
+        //当前运动方向
+        getDirection:function(){
+            return this.direction;
+        },
+        setDirection:function(dir){
+            this.direction=dir;
+        },
+        //用户操作方向
+        getOperate:function(){
+            return this.operate;
+        },
+        addOperate:function(ops){
+            this.operate.push(ops);
+        },
+        //头尾节点操作
+        getHead:function(){
+            return this.head;
+        },
+        setHead:function(node){
+            this.head=node;
+        },
+        getEnd:function(){
+            return this.end;
+        },
+        setEnd:function(node){
+            this.end=node;
+        },
+        //添加节点
+        addNode:function(node){
+            if(this.head==null)
+            {
+                this.head=node;
+            }else{
+                node.setPrevNode(this.end);
+                this.end.setNextNode(node);
+            }
+            this.end=node;
+        },
+        //蛇长度
+        length:function(){
+            var len=1;
+            var node=this.head.getNextNode();
+            while(node!=null)
+            {
+                len++;
+                node=node.getNextNode();
+            }
+            return len;
+        },
+        //吃东西
+        eat:function(node){
+            node.setNextNode(this.head);
+            this.head.setPrevNode(node);
+            this.head=node;
+        },
+        //移动速度
+        setSpeed:function(){
+            if(arguments[0])
+            {
+                this.speed=arguments[0];
+            }else{
+                var len=this.length()-5;
+                if(len>0)
+                {
+                    switch(true)
+                    {
+                        case len<10:this.speed=500;
+                            break;
+                        case len>=10&&len<20:this.speed=400;
+                            break;
+                        case len>=20&&len<30:this.speed=300;
+                            break;
+                        case len>=30&&len<40:this.speed=200;
+                            break;
+                        default:this.speed=100;
+                                break;
+                    }
+                }else{
+                    this.speed=500;
+                }
+            }
+        },
+        getSpeed:function(){
+            return this.speed;
+        }
+    };
+    //组成蛇的节点对象
+    function Node(rowNum,colNum){
+        //当前节点所必须的属性
+        this.row = rowNum;
+        this.col = colNum;
+ 
+        this.prevNode = null;
+        this.nextNode = null;
+    }
+    Node.prototype={
+        //行操作
+        getRow:function(){
+            return this.row;
+        },
+        setRow:function(rowNum){
+            this.row=rowNum;
+        },
+        //列操作
+        getCol:function(){
+            return this.col;
+        },
+        setCol:function(colNum){
+            this.col=colNum;
+        },
+        //下个节点操作和上个节点操作
+        getNextNode:function(){
+            return this.nextNode;
+        },
+        getPrevNode:function(){
+            return this.prevNode;
+        },
+        setNextNode:function(node)
+        {
+            this.nextNode=node;
+        },
+        setPrevNode:function(node){
+            this.prevNode=node;
+        },
+        //判断是不是头或者尾
+        isHead:function(){
+            return this.prevNode==null?true:false;
+        },
+        isEnd:function(){
+            return this.nextNode==null?true:false;
+        }
+    };
+    wyf.addHandler(window,"load",function(){
+        var box=wyf.byID("snake");
+        var snake=wyf.init(box);
+        window.time=null;
+        wyf.addHandler(document,"click",function(e){
+            var e=wyf.getEvent(e);
+            var target=wyf.getTarget(e);
+            switch(target.id)
+            {
+                case "start":gameStar();
+                    break;
+                case "stop":gameStop();
+                    break;
+            }
+        });
+        function gameStop(){
+            if(time)
+            {
+                clearInterval(time);
+                time=null;
+            }
+        }
+        function gameStar(){
+            if(!time)
+            {
+                time=setInterval(function(){
+                    wyf.move(snake,wyf.byClass("food",box))
+                },snake.getSpeed());
+            }
+        }
+        wyf.addHandler(document,"keydown",function(e){
+            if(time)
+            {
+                var op="";
+                var event=wyf.getEvent(e);
+                switch(event.keyCode)
+                {
+                    case 37:op="left";
+                        break;
+                    case 38:op="up";
+                        break;
+                    case 39:op="right";
+                        break;
+                    case 40:op="down";
+                        break;
+                }
+                if(op!="")
+                {
+                    snake.addOperate(op);
+                    quickSpeed(true);
+                }
+            }
+        });
+        wyf.addHandler(document,"keyup",function(e){
+            if(time)
+            {
+                var eventkey=wyf.getEvent(e).keyCode;
+                if(eventkey==37||eventkey==38||eventkey==39||eventkey==40)
+                {
+                    quickSpeed(false);
+                }
+            }
+        });
+        function quickSpeed(clicking){
+            var speed=snake.getSpeed();
+            if(clicking)
+            {
+                snake.setSpeed(100);
+                console.log(snake.getSpeed());
+            }else{
+                snake.setSpeed();
+                console.log(snake.getSpeed());
+            }
+            wyf.byID("speed").innerHTML=snake.getSpeed();
+            if(speed!=snake.getSpeed())
+            {
+                gameStop();
+                gameStar();
+            }
+        }
+    });
+</script>
+</body>
+</html>
