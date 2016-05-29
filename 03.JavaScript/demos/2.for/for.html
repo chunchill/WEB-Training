@@ -4,8 +4,9 @@
 <html class="expanded">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
 <style>
-div{
+ div{
 	float:left;
 	vertical-align:middle;
 	overflow:hidden; 
@@ -22,17 +23,27 @@ div{
 }
 </style>
 <script>
+
 function count()
 {
-	for(var i=1;i<10;i=i+2)
+
+	//for(var i=1;i<10;i=i+2)
+	//{
+	//	document.body.innerHTML+="<div>"+i+"</div>";
+	//}
+	
+	var i=1;
+	while(i<10)
 	{
-		document.body.innerHTML+="<div>"+i+"</div>"
+		document.body.innerHTML+="<div>"+i+"</div>";
+		i=i+2;
 	}
+	
 
 }
 </script>
 </head>
-<body onload="count()">
+<body width="" onload="count()">
 
 </body>
 </html>

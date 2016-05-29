@@ -3,22 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <script>
-function sum(a,b)
+function clicked()
 {
-	return a+b;
+	alert("clicked");
 }
-
-var result=sum(1,2);
-alert(result);
-
-/*
-function sum(a,b,c)
-{
-	return a+b+c;
-}
-var result=sum(1,2,3);
-alert(result);
-*/
 </script>
 </head>
+<body onload="clicked()">
+	<button onclick="clicked()">Test Click</button>
+</body>
 </html>
