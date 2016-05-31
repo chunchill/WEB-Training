@@ -1,0 +1,19 @@
+<script>
+//Constructor+prototype
+function StringBuilder(){
+	this.buffer=[];
+}
+
+StringBuilder.prototype.append=function(str){
+	this.buffer.push(str);
+	return this;
+}
+
+StringBuilder.prototype.toString=function(){
+	return this.buffer.join("");
+}
+
+var sb=new StringBuilder();
+sb.append("York").append(" ").append("Chen");
+alert(sb.toString());
+</script>

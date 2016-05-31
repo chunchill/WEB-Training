@@ -1,0 +1,22 @@
+<script>
+//durable
+function stringBuilder(){
+	var buffer=[];
+
+	var o=new Object();
+	o.append=function(str){
+		buffer.push(str);
+		return this;
+	}
+
+	o.toString=function(){
+		return buffer.join("");
+	}
+	return o;
+}
+
+
+var sb=stringBuilder();
+sb.append("York").append(" ").append("Chen");
+alert(sb.toString());
+</script>

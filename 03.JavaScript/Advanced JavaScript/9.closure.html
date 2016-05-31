@@ -1,0 +1,54 @@
+<script>
+
+//1.function scope
+function outer(){
+	var i=0;
+	//alert(i);
+}
+
+
+outer();
+//alert(i);
+
+
+//2.Privileged Method
+function outer(){
+	var i=0;
+	function inner(){
+		//alert(i);
+	}
+
+	return inner;
+}
+
+var privilege=outer();
+
+privilege();
+//alert(i);
+
+
+
+
+
+//3.protect data
+function person(){
+	var age=0;
+
+	function setAge(value){
+		if(value<0){
+			alert("Error");
+		}
+		else{
+			age=value;
+			alert(age);
+		}
+	}
+	return setAge;
+}
+
+
+var setter=person();
+setter(-1);
+
+
+</script>

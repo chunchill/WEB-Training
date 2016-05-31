@@ -1,0 +1,37 @@
+<script>
+
+function extend(superClass,subClass){
+	var o=new superClass();
+	subClass.prototype=o;
+}
+
+
+//Super Class
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+}
+Person.prototype.sayName=function(){
+	alert(this.name);
+}
+
+//Sub Class
+function Employee(name,age,id){
+	this.name=name;
+	this.age=age;
+	//Person.apply(this,[name,age]);
+	this.id=id;
+}
+
+extend(Person,Employee);
+
+
+var york=new Employee("York",1,2709);
+
+york.sayName();
+
+
+
+
+
+</script>

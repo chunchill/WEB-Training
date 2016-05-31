@@ -1,0 +1,58 @@
+<script>
+
+//1.Function Invocation
+var add = function(a,b){
+	//alert(this===window)
+	return a+b;
+}
+var sum=add(3,4);
+
+
+
+//2.Method Invocation
+var people={
+	name:"York",
+	age:1,
+	grow:function(){
+		this.age++;
+	}
+};
+people.grow();
+
+
+
+//3.Constructor Invocation
+var People=function(){
+	this.name="York";
+	this.age=1;
+	//return this;
+}
+
+var york=new People();
+
+
+//alert(york.name);
+
+//4.Apply Invocation
+var york={
+	name:"York",
+	age:1	
+}
+
+var york=function(){
+
+}
+
+york.age=0;
+
+var grow=function(){
+		this.age++;
+}
+
+grow.apply(york);
+alert(york.age);
+
+
+
+
+</script>

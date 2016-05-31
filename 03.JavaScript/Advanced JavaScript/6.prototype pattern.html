@@ -1,0 +1,19 @@
+<script>
+function Person(){}
+
+
+Person.prototype.name="york";
+Person.prototype.age=1;
+Person.sayName=function(){
+	alert(this.name);
+}
+var york=new Person();
+//york.sayName();
+var sean=new Person();
+//sean.sayName();
+sean.name="Sean";
+alert(sean.name);
+alert(york.name);
+
+
+</script>

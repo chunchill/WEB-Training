@@ -1,0 +1,41 @@
+<script>
+
+
+Function.prototype.extend=function(superClass){
+	var F=function(){};
+	F.prototype=superClass.prototype;
+	this.prototype=new F();
+	this.prototype.constructor=this;
+
+	this.superClass=superClass.prototype;
+	if(superClass.prototype.constructor==Object.prototype.constructor){
+		superClass.prototype.constructor=superClass;
+	}
+	return this;
+}
+
+
+//Super Class
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+}
+Person.prototype.sayName=function(){
+	alert(this.name);
+}
+
+//Sub Class
+function Employee(name,age,id){
+	Employee.superClass.constructor.apply(this,[name,age]);
+	this.id=id;
+}
+
+Employee.extend(Person);
+
+
+var york=new Employee("York",1,2709);
+
+york.sayName();
+
+
+</script>

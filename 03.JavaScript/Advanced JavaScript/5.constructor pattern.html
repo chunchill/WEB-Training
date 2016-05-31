@@ -1,0 +1,15 @@
+<script>
+
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.sayName=function(){
+		alert(this.name);
+	}
+}
+
+var york=new Person("York",1);
+var sean=new Person("Sean",2);
+
+alert(york.sayName==sean.sayName);
+</script>

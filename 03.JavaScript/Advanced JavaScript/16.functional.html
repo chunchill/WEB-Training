@@ -1,0 +1,32 @@
+<script>
+
+function animal(spec){
+	var that={};
+	that.age=spec.age;
+	return that;
+}
+
+function person(spec){
+
+	var that=animal(spec);
+	that.name=spec.name;
+	that.getName=function(){
+		return this.name;
+	}
+	return that;
+}
+
+function employee(spec){
+	var that=person(spec);
+	that.id=spec.id;
+	that.getId=function(){
+		return this.id;
+	}
+	return that;
+}
+
+var spec={name:"York",age:1,id:2709};
+var york=new employee(spec);
+alert(york.getName());
+
+</script>

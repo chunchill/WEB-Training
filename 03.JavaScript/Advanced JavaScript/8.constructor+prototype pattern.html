@@ -1,0 +1,24 @@
+<script>
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.friends=["Jasper","Tristan"];
+}
+
+Person.prototype.sayName=function(){
+	alert(this.name);
+}
+
+var york=new Person("York",1);
+var sean=new Person("Sean",2);
+
+york.friends.push("evil");
+
+//alert(york.friends);
+//alert(sean.friends);
+alert(york.friends==sean.friends);
+alert(york.sayName==sean.sayName);
+
+
+
+</script>

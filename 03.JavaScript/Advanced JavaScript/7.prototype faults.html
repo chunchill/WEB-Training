@@ -1,0 +1,22 @@
+<script>
+function Person(){}
+
+Person.prototype={
+	name:"york",
+	friends:["Jasper","Tristan"],
+	sayName:function(){
+		alert(this.name);
+	}
+}
+
+
+var york=new Person();
+york.name="york";
+var sean=new Person();
+sean.name="sean";
+
+york.friends.push("evil");
+
+alert(sean.friends);
+
+</script>

@@ -1,0 +1,23 @@
+<script>
+//factory
+function stringBuilder(){
+	var o=new Object();
+
+	o.buffer=[];
+
+	o.append=function(str){
+		this.buffer.push(str);
+		return this;
+	}
+
+	o.toString=function(){
+		return this.buffer.join("");
+	}
+	return o;
+}
+
+
+var sb=stringBuilder();
+sb.append("York").append(" ").append("Chen");
+alert(sb.toString());
+</script>

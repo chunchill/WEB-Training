@@ -1,0 +1,41 @@
+<script>
+
+function animal(spec,message){
+	var that={};
+	var age=spec.age;
+	that.getAge=function(){
+		return age;
+	}
+	message.push("Animal created.");
+	return that;
+	
+}
+
+function person(spec,message){
+	var that=animal(spec,message);
+	var name=spec.name
+	that.getName=function(){
+		return name;
+	}
+	message.push("Person created.");
+	return that;
+	
+}
+
+function employee(spec){
+	var message=[];
+	var that=person(spec,message);
+	var id=spec.id;
+	that.getId=function(){
+		return this.id;
+	}
+	message.push("Employee created.");
+	alert(message.join("\r\n"))
+	return that;
+}
+
+var spec={name:"York",age:1,id:2709}
+var york=new employee(spec);
+alert(york.getName());
+
+</script>

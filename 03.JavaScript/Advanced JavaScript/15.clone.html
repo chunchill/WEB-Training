@@ -1,0 +1,29 @@
+<script>
+
+function clone(o){
+	var F = function(){};
+	F.prototype = o;
+	return new F();
+}
+
+
+var person={
+	name:"Default Name",
+	age:1,
+	sayName:function(){
+		alert(this.name);
+	}
+};
+
+
+var employee=clone(person);
+
+employee.name="York";
+employee.id=2709;
+employee.sayId=function(){
+	alert(this.id);
+};
+
+employee.sayName();
+
+</script>
