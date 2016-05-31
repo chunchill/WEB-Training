@@ -1,0 +1,36 @@
+<html>
+	<head>
+	<meta charset="gb2312">
+	<title>汉诺塔</title>
+	<script>
+		function hanoi(n,one,two,three){
+		  if(n==1)
+			 move(one,three);
+		  else
+			{
+			 hanoi(n-1,one,three,two);
+			 move(one,three);
+			 hanoi(n-1,two,one,three);
+			}
+		 }
+		 
+		 function move(x,y){
+			var step=x+" → "+y;
+			document.getElementById("result").innerHTML+=step+"<br>";
+		 }
+		 
+		function go(){
+			document.getElementById("result").innerHTML="";
+			var num = parseInt(document.getElementById("num").value) || 3;
+			hanoi(num,'A','B','C',{'A':num,'B':0,'C':0});
+		}
+		 
+	</script>
+	</head>
+	<body>
+		请输入汉诺塔的数量：<input id="num" value="3"><button onclick="go();">确定</button><br>
+		<div id="result">
+		
+		<div>
+	</body>
+</html>

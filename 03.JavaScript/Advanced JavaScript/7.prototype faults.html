@@ -3,7 +3,7 @@ function Person(){}
 
 Person.prototype={
 	name:"york",
-	friends:["Jasper","Tristan"],
+	friends:["Sam","Tom"],
 	sayName:function(){
 		alert(this.name);
 	}
@@ -12,11 +12,11 @@ Person.prototype={
 
 var york=new Person();
 york.name="york";
-var sean=new Person();
-sean.name="sean";
+var jasper=new Person();
+jasper.name="Jasper";
 
 york.friends.push("evil");
 
-alert(sean.friends);
+alert(jasper.friends);
 
 </script>

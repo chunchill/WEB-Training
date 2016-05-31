@@ -1,0 +1,38 @@
+<html>
+	<head>
+	<title>汉诺塔</title>
+	<script>
+		function hanoi(n,one,two,three,map)          // 定义hanoi函数  
+		// 将n个盘从one座借助two座,移到three座 
+		 {
+		  if(n==1)
+			 move(one,three,map);
+		  else
+			{
+			 hanoi(n-1,one,three,two,map);
+			 move(one,three,map);
+			 hanoi(n-1,two,one,three,map);
+			}
+		 }
+		 
+		 function move(x,y,map){
+			map[x] -= 1;
+			map[y] += 1;
+			var flag = [];
+			for(key in map){
+				flag.push(map[key]);
+			}
+			document.write(x+" → "+y + " :  " + flag.join('-') + "<br>");
+		 }
+		 
+		function go(){
+			var num = parseInt(document.getElementById("num").value) || 3;
+			hanoi(num,'A','B','C',{'A':num,'B':0,'C':0});
+		}
+		 
+	</script>
+	</head>
+	<body>
+		请输入汉诺塔的数量：<input id="num" value="3"><button onclick="go();">确定</button><br>
+	</body>
+</html>
