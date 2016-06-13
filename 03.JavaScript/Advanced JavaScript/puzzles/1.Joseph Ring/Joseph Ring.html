@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="gb2312">
+    <title>Joseph Ring</title>
+    <script type="text/javascript">
+        var josephRing = function (number) {
+            var players = [];
+            for (var i = 1; i <= number; i++) {
+                players.push(i);
+            }
+            var flag = 0;
+            while (players.length > 1) {
+                var outPlayerNum = 0, len = players.length;
+                for (var i = 0; i < len; i++) {
+                    flag++;
+                    if (flag == 3) {
+                        flag = 0;
+                        outPut("出局:" + players[i - outPlayerNum]);
+                        players.splice(i - outPlayerNum, 1);
+                        outPlayerNum++;
+                    }
+                }
+            }
+
+            var result=players[0];
+            outPut("剩下:" + result);
+            return result;
+        };
+
+
+        var outPut= function (text) {
+            document.getElementById("result").innerHTML+=text+"</br>";
+        }
+    </script>
+</head>
+<body>
+请输入环形的数量：<input id="num" value="10"><button onclick="josephRing(document.getElementById('num').value)">确定</button><br>
+<div id="result">
+
+<div>
+</body>
+</html>
