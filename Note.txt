@@ -37,8 +37,11 @@
 
 
 
+2016-05-07 HTML5 session 1
+2016-05-14 HTML5 session 2
+2016-05-21 CSS
+2016-05-28 JavaScript session 1 basic javascript
+2016-06-04 JavaScript session 2 advanced javascript 1
+2016-06-18 JavaScript session 3 advanced javascript 2
+2016-06-25 JavaScript session 4 
 
-1.javascript demos
-2.contents
-3.firebug consoe and script tabs
-4.
