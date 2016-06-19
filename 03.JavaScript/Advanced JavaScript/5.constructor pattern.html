@@ -3,13 +3,14 @@
 function Person(name,age){
 	this.name=name;
 	this.age=age;
-	this.sayName=function(){
-		alert(this.name);
-	}
+    this.sayName=function()
+    {
+        alert(this.name);
+    }
+
 }
-
-var york=new Person("York",1);
+var york=new Person("York ",1);
 var jasper=new Person("Jasper",2);
-
-alert(york.sayName==jasper.sayName);
 </script>
+
+

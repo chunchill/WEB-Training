@@ -1,19 +1,15 @@
 <script>
 function Person(){}
 
+Person.prototype={"name":"york",
+    "age":1,
+    "sayName":function(){
+        alert(this.name);
+    }};
 
-Person.prototype.name="york";
-Person.prototype.age=1;
-Person.sayName=function(){
-	alert(this.name);
-}
 var york=new Person();
-//york.sayName();
 var jasper=new Person();
-//jasper.sayName();
-jasper.name="Jasper";
-alert(jasper.name);
-alert(york.name);
+
 
 
 </script>

@@ -4,10 +4,16 @@ function People(name,age){
 	this.age=age;
 }
 
-//alert(People.prototype);
-People.prototype.COUNT_OF_LEGS=2;
+面向过程
+People.prototype.legCount=2;
 
 var york=new People("York",1);
-//alert(york.name);
-alert(york.COUNT_OF_LEGS);
+york.legCount=1;
+
+alert(york.legCount);
+
+var jasper=new People("Jasper",2);
+
+alert(jasper.legCount);
+
 </script>

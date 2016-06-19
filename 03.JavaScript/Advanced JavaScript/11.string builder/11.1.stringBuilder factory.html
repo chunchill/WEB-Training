@@ -17,7 +17,10 @@ function stringBuilder(){
 }
 
 
-var sb=stringBuilder();
-sb.append("York").append(" ").append("Chen");
-alert(sb.toString());
+var builder=stringBuilder();
+builder.append("York").append(" ").append("Chen");
+//builder.toString();
+builder.buffer=[];
+alert(builder.toString());
+
 </script>

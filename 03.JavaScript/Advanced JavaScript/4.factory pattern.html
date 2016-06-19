@@ -1,15 +1,20 @@
 <script>
 function person(name,age){
-	var p=new Object();
+	var p={};
 	p.name=name;
 	p.age=age;
 	p.sayName=function(){
-		alert(this.name);
-	}
+        alert(this.name);
+    }
 	return p;
 }
 
 var york=person("York",1);
 var jasper=person("Jasper",2);
 alert(jasper.name);
+
+
+alert(york.Type=="person")
 </script>
+
+

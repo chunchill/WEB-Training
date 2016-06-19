@@ -5,35 +5,42 @@
     <script type="text/javascript">
         var Person = function (sequence) {
             this.sequence = sequence;
-        }
+            this.count=function(){
+                current=current.next;
+
+                console.log("出局"＋this.sequence);
+            }
+        };
+
 
         var josephRing = function (number) {
             var first;
             var current;
             for (var i = 1; i <= number; i++) {
-                var p = new Person(i);
-                if (i == 1)
-                    first = p;
-                else
-                    current.next = p;
-                current = p;
+                    var p = new Person(i);
+                    if (i == 1)
+                        first = p;
+                    else
+                        current.next = p;
+
+                    current = p;
             }
             current.next = first;
 
 
+            current = first;
             var previous;
-            while (current.next!=current) {
+            while (current.next != current) {
 
-                for(var i=1;i<=3;i++)
-                {
-                    previous=current;
-                    current=current.next;
-                    if(i==3)
-                    {
-                        outPut("出局:" + current.sequence);
-                        previous.next=current.next;
-                    }
+                for (var i = 1; i < 3; i++) {
+                    previous = current;
+                    current = current.next;
+
                 }
+
+                outPut("出局:" + current.sequence);
+                previous.next = current.next;
+                current = current.next;
             }
 
             var result = current.sequence;
@@ -53,7 +60,6 @@
 <br>
 
 <div id="result">
-
-    <div>
+</div>
 </body>
 </html>

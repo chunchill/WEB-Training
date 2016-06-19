@@ -15,19 +15,17 @@ outer();
 function outer(){
 	var i=0;
 	function inner(){
-		//alert(i);
+		alert(i);
 	}
-
 	return inner;
 }
 
-var privilege=outer();
+var a=outer();
 
-privilege();
-//alert(i);
-
+//a();
 
 
+document.body.innerHTML="<br/>"+"<div>"
 
 
 //3.protect data
@@ -35,7 +33,8 @@ function person(){
 	var age=0;
 
 	function setAge(value){
-		if(value<0){
+
+		if(value<=0){
 			alert("Error");
 		}
 		else{
