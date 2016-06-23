@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="gb2312">
+    <title></title>
+    <script src="jquery-3.0.0.js"></script>
+    <script>
+        window.onload = function () {
+            var input1 = document.getElementById("num");
+            alert(input1.value);
+
+            var inputs = document.getElementsByTagName("input");
+            alert(inputs.length);
+
+            var wides = document.getElementsByClassName("wide");
+            alert(wides.length);
+
+            var firstSpan = document.querySelector("div.test>p:first-child");
+            alert(firstSpan.innerHTML);
+
+
+            var spans = document.querySelectorAll("div.test>p");
+            alert(spans.length);
+        }
+    </script>
+</head>
+<body>
+<input id="num" value="1">
+<input class="wide" value="2">
+<input class="wide" value="3">
+<input class="wide" value="4">
+
+<div class="test">
+    <p>
+        <span>1</span>
+        <span>2</span>
+    </p>
+    <p>
+        <span>1</span>
+        <span>2</span>
+    </p>
+
+
+</div>
+</body>
+</html>
+

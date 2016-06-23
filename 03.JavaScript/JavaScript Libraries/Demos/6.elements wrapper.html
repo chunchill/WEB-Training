@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="gb2312">
+    <title></title>
+    <style>
+        .yellow{color: yellow;}
+        .blue{color: blue;}
+        .red{color: red;}
+        .black{color: black;}
+
+    </style>
+    <script src="jquery-3.0.0.js"></script>
+    <script>
+        $(
+                function () {
+                    var dom=document.getElementById("myid");
+                    var wrapped=$(dom);
+                    var yellows=wrapped.find("p.yellow");
+                    console.log(yellows.length);
+
+                }
+        );
+    </script>
+</head>
+<body>
+
+<div id="myid">
+    <p class="yellow"></p>
+    <p class="blue"></p>
+    <p class="yellow"></p>
+    <p class="red"></p>
+    <p class="black"></p>
+</div>
+</body>
+</html>
+
