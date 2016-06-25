@@ -2,9 +2,15 @@
 <head>
     <meta charset="gb2312">
     <title></title>
+    <style>
+        #id{color: red;}
+
+        .class1{color: black;}
+    </style>
     <script src="jquery-3.0.0.js"></script>
     <script>
         $(
+
                 function () {
                     var elem = $("#num");
                     //alert(elem.length);
@@ -16,7 +22,7 @@
                     //alert(elems.length);
 
                     var elems = $("#myDiv div> p.special:not(.classy)");
-                    //alert(elems.length);
+                    alert(elems.length);
 
                 }
         );

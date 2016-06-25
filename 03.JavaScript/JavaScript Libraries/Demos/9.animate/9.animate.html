@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>注册中心</title>
+    <script src="../jquery-3.0.0.js"></script>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="res.css">
+    <meta http-equiv="content-type" charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7"/>
+    <style type="text/css">
+        li {
+            border: 1px solid #000
+        }
+
+        .muHover {
+            background: #efefef none repeat scroll 0 0;
+        }
+    </style>
+    <script>
+
+        function fadeOut() {
+            $("li").each(
+                    function (index, item) {
+                        $(item).fadeOut(1500);
+                    }
+            );
+        }
+        function fadeIn() {
+            $("li").each(
+                    function (index, item) {
+                        $(item).fadeIn(1500);
+                    }
+            );
+        }
+        function slideUp() {
+            $("li").each(
+                    function (index, item) {
+                        $(item).slideUp((index + 1) * 200);
+                    }
+            );
+        }
+        function slideDown() {
+            $("li").each(
+                    function (index, item) {
+                        $(item).slideDown((index + 1) * 200);
+                    }
+            );
+        }
+
+    </script>
+</head>
+<body>
+<div class="wp_res">
+    <div class="header">
+        <h1></h1>
+    </div>
+    <div class="main_res png">
+        <div>
+            <!-- 注册表单 -->
+            <div class="title">
+                <a href="#" class="email2 un2" title=""><span class="ico_r_email"></span></a>
+            </div>
+            <div class="form">
+                <div>
+                    <button class="" title="" onclick="fadeIn()">fade in</button>
+                    <button class="" title="" onclick="fadeOut()">fade out</button>
+                    <button class="" title="" onclick="slideUp()">slide up</button>
+                    <button class="" title="" onclick="slideDown()">slide down</button>
+                </div>
+                <br>
+
+                <form class="form_email" method="post" action="Result.html">
+                    <ul>
+                        <li clas="idx">
+                            <div class="text">
+                                <span class="ico_f_email"></span>
+                                <input tabindex="5" type="text" class="ipt_nor" placeholder="邮箱" value=""/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <span class="ico_f_pwd"></span>
+                                <input tabindex="6" class="ipt_nor" value="" placeholder="密码" type="password"
+                                       maxlength="16"/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <span class="ico_f_cfm"></span>
+                                <input class="ipt_nor" placeholder="确认密码" value="" type="password" maxlength="16"/>
+                            </div>
+                        </li>
+
+
+                        <li clas="idx">
+                            <div class="text">
+                                <span class="ico_f_email"></span>
+                                <input tabindex="5" type="text" class="ipt_nor" placeholder="姓名" value=""/>
+                            </div>
+                        </li>
+
+                        <li clas="idx">
+                            <div class="text">
+                                <span class="ico_f_email"></span>
+                                <input tabindex="5" type="text" class="ipt_nor" placeholder="年龄" value=""/>
+                            </div>
+                        </li>
+                        <li clas="idx">
+                            <div class="text">
+                                <span class="ico_f_email"></span>
+                                <input tabindex="5" type="text" class="ipt_nor" placeholder="地址" value=""/>
+                            </div>
+                        </li>
+                    </ul>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="light png"></div>
+</div>
+</body>
+</html>

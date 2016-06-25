@@ -1,21 +1,109 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1343.13">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <title></title>
+    <!--15017226075-->
+    <script>
+        function sort() {
+            var items = [];
+            for (var i = 0; i < 13; i++) {
+                items[i] = getCardName(i);
+            }
+
+            var result = [];
+            while (items.length > 1) {
+                var item = items.shift();
+                items.push(item);
+
+                item = items.shift();
+                items.push(item);
+
+                item = items.shift();
+                result.push(item);
+            }
+
+            result.push(items[0]);
+            console.log(result);
+            return result;
+
+        }
+
+        function reOrder(result) {
+            var orderedList = [];
+            for (var i in result) {
+                var name = result[i];
+                var index = getIndex(name);
+
+                var number=parseInt(i);
+                orderedList[index] = getCardName(number);
+            }
+
+            return orderedList;
+        }
+
+        function getCardName(index) {
+            switch (index) {
+                case 10:
+                    return "J";
+                case 11:
+                    return "Q";
+                case  12:
+                    return "K";
+                default :
+                    return (index + 1).toString();
+            }
+        }
+
+        function getIndex(cardName) {
+            switch (cardName) {
+                case "J":
+                    return 10;
+                case "Q":
+                    return 11;
+                case  "K":
+                    return 12;
+                default :
+                    return parseInt(cardName) - 1;
+            }
+        }
+
+        var tempResult = sort();
+        var result = reOrder(tempResult);
+
+        alert(result);
+
+        var york={};
+
+
+
+
+        var person= function()
+        {
+            return{
+                "name":"york",
+                getFriend:function()
+                {
+                    return person();
+                }
+            }
+        }
+
+
+        var york=person();
+        york.getFriend().getFriend().getFriend().getFriend()
+
+
+
+
+
+
+
+    </script>
+
 </head>
 <body>
-<p class="p1"><span class="s1">http://www.wenkudaquan.com/doc/20120419/90237.html</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">http://www.taodocs.com/p-34059933.html</span></p>
+
 </body>
 </html>

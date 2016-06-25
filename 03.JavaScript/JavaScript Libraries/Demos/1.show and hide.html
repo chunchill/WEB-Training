@@ -1,6 +1,9 @@
 <html>
 	<head>
 	<meta charset="gb2312">
+    <style>
+        input{display: none;}
+    </style>
 	<title></title>
         <script src="jquery-3.0.0.js"></script>
 	<script>
@@ -9,14 +12,16 @@
         }
 
         function hide(){
-            $("#num").hide();
+            document.getElementById("num").style.display="none";
+            //$("#num").hide();
         }
 	</script>
 	</head>
 	<body>
 		<input id="num">
         <br>
-        <button id="toShow" onclick="show()">显示</button> <button id="toHide"  onclick="hide()">隐藏</button>
+        <button id="toShow" onclick="show()">显示</button>
+        <button id="toHide"  onclick="hide()">隐藏</button>
 	</body>
 </html>
 

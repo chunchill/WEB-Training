@@ -6,16 +6,16 @@
     <script>
         window.onload = function () {
             var input1 = document.getElementById("num");
-            alert(input1.value);
+            //alert(input1.value);
 
             var inputs = document.getElementsByTagName("input");
-            alert(inputs.length);
+            //alert(inputs.length);
 
             var wides = document.getElementsByClassName("wide");
-            alert(wides.length);
+            //alert(wides.length);
 
             var firstSpan = document.querySelector("div.test>p:first-child");
-            alert(firstSpan.innerHTML);
+            //alert(firstSpan.innerHTML);
 
 
             var spans = document.querySelectorAll("div.test>p");
@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-<input id="num" value="1">
+<input id="num" class="myClass" value="1">
 <input class="wide" value="2">
 <input class="wide" value="3">
 <input class="wide" value="4">
